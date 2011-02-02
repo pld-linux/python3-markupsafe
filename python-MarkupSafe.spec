@@ -3,7 +3,7 @@ Summary:	Implements a XML/HTML/XHTML Markup safe string for Python
 Summary(pl.UTF-8):	-
 Name:		python-%{module}
 Version:	0.11
-Release:	0.1
+Release:	0.2
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/M/MarkupSafe/%{module}-%{version}.tar.gz
@@ -48,6 +48,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.rst
 %{py_sitedir}/markupsafe/*.py[co]
+%dir %attr(755,root,root) %{py_sitedir}/markupsafe
 %attr(755,root,root) %{py_sitedir}/markupsafe/*.so
 %if "%{py_ver}" > "2.4"
 %{py_sitedir}/%{module}-*.egg-info
