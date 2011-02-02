@@ -10,11 +10,12 @@ Source0:	http://pypi.python.org/packages/source/M/MarkupSafe/%{module}-%{version
 # Source0-md5:	48d445941c16d6aa55caf8e148fc0911
 URL:		http://www.pocoo.org/
 BuildRequires:	python-devel
+BuildRequires:	python-setuptools
 BuildRequires:	rpm-pythonprov
 # if py_postclean is used
 BuildRequires:	rpmbuild(macros) >= 1.219
 #Requires:		python-libs
-Requires:		python-modules
+Requires:	python-modules
 #BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -48,7 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.rst
 %{py_sitedir}/markupsafe/*.py[co]
-%dir %attr(755,root,root) %{py_sitedir}/markupsafe
+%dir %{py_sitedir}/markupsafe
 %attr(755,root,root) %{py_sitedir}/markupsafe/*.so
 %if "%{py_ver}" > "2.4"
 %{py_sitedir}/%{module}-*.egg-info
