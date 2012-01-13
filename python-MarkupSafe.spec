@@ -1,28 +1,25 @@
 %define 	module	MarkupSafe
 Summary:	Implements a XML/HTML/XHTML Markup safe string for Python
-Summary(pl.UTF-8):	-
+#Summary(pl.UTF-8):	-
 Name:		python-%{module}
-Version:	0.11
+Version:	0.15
 Release:	0.2
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/M/MarkupSafe/%{module}-%{version}.tar.gz
-# Source0-md5:	48d445941c16d6aa55caf8e148fc0911
+# Source0-md5:	4e7c4d965fe5e033fa2d7bb7746bb186
 URL:		http://www.pocoo.org/
 BuildRequires:	python-devel
 BuildRequires:	python-setuptools
 BuildRequires:	rpm-pythonprov
-# if py_postclean is used
 BuildRequires:	rpmbuild(macros) >= 1.219
-#Requires:		python-libs
 Requires:	python-modules
-#BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Implements a XML/HTML/XHTML Markup safe string for Python.
 
-%description -l pl.UTF-8
+#%description -l pl.UTF-8
 
 %prep
 %setup -q -n %{module}-%{version}
