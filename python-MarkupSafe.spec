@@ -1,9 +1,8 @@
 %define 	module	MarkupSafe
 Summary:	Implements a XML/HTML/XHTML Markup safe string for Python
-#Summary(pl.UTF-8):	-
 Name:		python-%{module}
 Version:	0.15
-Release:	0.2
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/M/MarkupSafe/%{module}-%{version}.tar.gz
@@ -19,14 +18,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Implements a XML/HTML/XHTML Markup safe string for Python.
 
-#%description -l pl.UTF-8
-
 %prep
 %setup -q -n %{module}-%{version}
 
 %build
 # CFLAGS is only for arch packages - remove on noarch packages
-export CFLAGS="%{rpmcflags}"
+CC="%{__cc}" \
+CFLAGS="%{rpmcflags}" \
 %{__python} setup.py build
 
 %install
@@ -34,6 +32,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__python} setup.py install \
 	--optimize=2 \
 	--root=$RPM_BUILD_ROOT
+
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/markupsafe/_speedups.c
 
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
 %py_comp $RPM_BUILD_ROOT%{py_sitedir}
