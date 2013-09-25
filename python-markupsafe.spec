@@ -4,14 +4,14 @@
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
-%define 	module	MarkupSafe
+%define 	module	markupsafe
 Summary:	Implements a XML/HTML/XHTML Markup safe string for Python
 Name:		python-%{module}
 Version:	0.15
 Release:	2
 License:	BSD
 Group:		Development/Languages/Python
-Source0:	http://pypi.python.org/packages/source/M/MarkupSafe/%{module}-%{version}.tar.gz
+Source0:	http://pypi.python.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
 # Source0-md5:	4e7c4d965fe5e033fa2d7bb7746bb186
 URL:		http://www.pocoo.org/
 BuildRequires:	rpm-pythonprov
@@ -26,6 +26,8 @@ BuildRequires:	python3-devel
 BuildRequires:	python3-distribute
 %endif
 Requires:	python-modules
+Provides:	python-MarkupSafe = %{version}-%{release}
+Obsoletes:	python-MarkupSafe < 0.15-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,7 +42,7 @@ Implements a XML/HTML/XHTML Markup safe string for Python.
 
 %prep
 %setup -qc
-mv %{module}-%{version} py2
+mv MarkupSafe-%{version} py2
 # for %doc
 cp -p py2/{AUTHORS,LICENSE,README.rst} .
 
