@@ -5,14 +5,15 @@
 %bcond_without	python3 # CPython 3.x module
 
 %define 	module	markupsafe
-Summary:	Implements a XML/HTML/XHTML Markup safe string for Python
+Summary:	MarkupSafe - a XML/HTML/XHTML Markup safe string for Python 2
+Summary(pl.UTF-8):	MarkupSafe - łańcuch dla Pythona 2 bezpieczny pod kątem znaczników XML/HTML/XHTML
 Name:		python-%{module}
-Version:	0.15
-Release:	2
+Version:	0.18
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
-Source0:	http://pypi.python.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
-# Source0-md5:	4e7c4d965fe5e033fa2d7bb7746bb186
+Source0:	https://pypi.python.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
+# Source0-md5:	f8d252fd05371e51dec2fe9a36890687
 URL:		http://www.pocoo.org/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
@@ -31,14 +32,24 @@ Obsoletes:	python-MarkupSafe < 0.15-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Implements a XML/HTML/XHTML Markup safe string for Python.
+MarkupSafe implements a XML/HTML/XHTML Markup safe string for Python.
+
+%description -l pl.UTF-8
+MarkupSafe to implementacja łańcucha znaków dla Pythona bezpiecznego
+pod kątem znaczników XML/HTML/XHTML.
 
 %package -n python3-markupsafe
-Summary:	Implements a XML/HTML/XHTML Markup safe string for Python
+Summary:	Implements a XML/HTML/XHTML Markup safe string for Python 3
+Summary(pl.UTF-8):	MarkupSafe - łańcuch dla Pythona 3 bezpieczny pod kątem znaczników XML/HTML/XHTML
 Group:		Development/Languages
+Requires:	python3-modules
 
 %description -n python3-markupsafe
-Implements a XML/HTML/XHTML Markup safe string for Python.
+MarkupSafe implements a XML/HTML/XHTML Markup safe string for Python.
+
+%description -n python3-markupsafe -l pl.UTF-8
+MarkupSafe to implementacja łańcucha znaków dla Pythona bezpiecznego
+pod kątem znaczników XML/HTML/XHTML.
 
 %prep
 %setup -qc
@@ -94,9 +105,6 @@ cd py3
 	--root=$RPM_BUILD_ROOT
 
 
-# err the unversioned one is duplicate
-%{__rm} -r $RPM_BUILD_ROOT%{py3_sitedir}/MarkupSafe.egg-info
-
 # C code errantly gets installed
 %{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/markupsafe/_speedups.c
 cd ..
@@ -111,7 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS LICENSE README.rst
 %dir %{py_sitedir}/markupsafe
 %{py_sitedir}/markupsafe/*.py[co]
-%attr(755,root,root) %{py_sitedir}/markupsafe/*.so
+%attr(755,root,root) %{py_sitedir}/markupsafe/_speedups.so
 %{py_sitedir}/MarkupSafe-%{version}-py*.egg-info
 %endif
 
@@ -122,6 +130,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py3_sitedir}/markupsafe
 %{py3_sitedir}/markupsafe/*.py
 %{py3_sitedir}/markupsafe/__pycache__
-%attr(755,root,root) %{py3_sitedir}/markupsafe/*.so
+%attr(755,root,root) %{py3_sitedir}/markupsafe/_speedups.cpython-*.so
 %{py3_sitedir}/MarkupSafe-%{version}-py*.egg-info
 %endif
