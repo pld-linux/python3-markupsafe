@@ -9,7 +9,7 @@ Summary:	MarkupSafe - a XML/HTML/XHTML Markup safe string for Python 2
 Summary(pl.UTF-8):	MarkupSafe - łańcuch dla Pythona 2 bezpieczny pod kątem znaczników XML/HTML/XHTML
 Name:		python-%{module}
 Version:	0.18
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	https://pypi.python.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
