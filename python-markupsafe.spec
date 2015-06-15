@@ -20,12 +20,12 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 %if %{with python2}
 BuildRequires:	python-devel
-BuildRequires:	python-distribute
+BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
 BuildRequires:	python-2to3
 BuildRequires:	python3-devel
-BuildRequires:	python3-distribute
+BuildRequires:	python3-setuptools
 %endif
 Requires:	python-modules
 Provides:	python-MarkupSafe = %{version}-%{release}
