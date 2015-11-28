@@ -67,18 +67,14 @@ cp -a py2 py3
 %if %{with python2}
 cd py3
 # CFLAGS is only for arch packages - remove on noarch packages
-CC="%{__cc}" \
-CFLAGS="%{rpmcflags}" \
-%{__python} setup.py build
+%py_build
 %{?with_tests:%{__python} setup.py test}
 cd ..
 %endif
 
 %if %{with python3}
 cd py3
-CC="%{__cc}" \
-CFLAGS="%{rpmcflags}" \
-%{__python3} setup.py build
+%py3_build
 %{?with_tests:%{__python3} setup.py test}
 cd ..
 %endif
@@ -87,9 +83,7 @@ cd ..
 rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 cd py2
-%{__python} setup.py install \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 # C code errantly gets installed
 %{__rm} $RPM_BUILD_ROOT%{py_sitedir}/markupsafe/_speedups.c
@@ -101,9 +95,7 @@ cd ..
 
 %if %{with python3}
 cd py3
-%{__python3} setup.py install \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py3_install
 
 
 # C code errantly gets installed
