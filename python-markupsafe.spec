@@ -17,7 +17,7 @@ Source0:	https://pypi.python.org/packages/source/M/MarkupSafe/MarkupSafe-%{versi
 # Source0-md5:	f5ab3deee4c37cd6a922fb81e730da6e
 URL:		http://www.pocoo.org/
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with python2}
 BuildRequires:	python-devel
 BuildRequires:	python-setuptools
