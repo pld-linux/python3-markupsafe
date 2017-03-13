@@ -8,14 +8,14 @@
 Summary:	MarkupSafe - a XML/HTML/XHTML Markup safe string for Python 2
 Summary(pl.UTF-8):	MarkupSafe - łańcuch dla Pythona 2 bezpieczny pod kątem znaczników XML/HTML/XHTML
 Name:		python-%{module}
-Version:	0.23
-Release:	7
+Version:	1.0
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.python.org/pypi/MarkupSafe
-Source0:	https://pypi.python.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
-# Source0-md5:	f5ab3deee4c37cd6a922fb81e730da6e
-URL:		http://www.pocoo.org/
+Source0:	https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
+# Source0-md5:	2fcedc9284d50e577b5192e8e3578355
+URL:		http://www.pocoo.org/projects/markupsafe/#markupsafe
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with python2}
@@ -53,54 +53,31 @@ MarkupSafe to implementacja łańcucha znaków dla Pythona bezpiecznego
 pod kątem znaczników XML/HTML/XHTML.
 
 %prep
-%setup -qc
-mv MarkupSafe-%{version} py2
-# for %doc
-cp -p py2/{AUTHORS,LICENSE,README.rst} .
-
-%if %{with python3}
-cp -a py2 py3
-2to3 --write --nobackups py3
-%endif
+%setup -q -n MarkupSafe-%{version}
 
 %build
 %if %{with python2}
-cd py3
-# CFLAGS is only for arch packages - remove on noarch packages
-%py_build
-%{?with_tests:%{__python} setup.py test}
-cd ..
+%py_build %{?with_tests:test}
 %endif
 
 %if %{with python3}
-cd py3
-%py3_build
-%{?with_tests:%{__python3} setup.py test}
-cd ..
+%py3_build %{?with_tests:test}
 %endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
-cd py2
 %py_install
 
+%py_postclean
 # C code errantly gets installed
 %{__rm} $RPM_BUILD_ROOT%{py_sitedir}/markupsafe/_speedups.c
-%py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
-%py_comp $RPM_BUILD_ROOT%{py_sitedir}
-%py_postclean
-cd ..
 %endif
 
 %if %{with python3}
-cd py3
 %py3_install
 
-
-# C code errantly gets installed
 %{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/markupsafe/_speedups.c
-cd ..
 %endif
 
 %clean
