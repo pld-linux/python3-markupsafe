@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	tests	# do not perform "make test"
+%bcond_without	tests	# unit tests
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
@@ -12,7 +12,7 @@ Version:	1.0
 Release:	2
 License:	BSD
 Group:		Development/Languages/Python
-#Source0Download: https://pypi.python.org/pypi/MarkupSafe
+#Source0Download: https://pypi.org/pypi/MarkupSafe/
 Source0:	https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
 # Source0-md5:	2fcedc9284d50e577b5192e8e3578355
 URL:		http://www.pocoo.org/projects/markupsafe/#markupsafe
