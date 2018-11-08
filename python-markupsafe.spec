@@ -8,13 +8,13 @@
 Summary:	MarkupSafe - a XML/HTML/XHTML Markup safe string for Python 2
 Summary(pl.UTF-8):	MarkupSafe - łańcuch dla Pythona 2 bezpieczny pod kątem znaczników XML/HTML/XHTML
 Name:		python-%{module}
-Version:	1.0
-Release:	2
+Version:	1.1.0
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/pypi/MarkupSafe/
 Source0:	https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
-# Source0-md5:	2fcedc9284d50e577b5192e8e3578355
+# Source0-md5:	49e3f3230cedb7ae34faf06913db83fc
 URL:		http://www.pocoo.org/projects/markupsafe/#markupsafe
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
@@ -86,7 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS LICENSE README.rst
+%doc LICENSE.rst README.rst
 %dir %{py_sitedir}/markupsafe
 %{py_sitedir}/markupsafe/*.py[co]
 %attr(755,root,root) %{py_sitedir}/markupsafe/_speedups.so
@@ -96,7 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-markupsafe
 %defattr(644,root,root,755)
-%doc AUTHORS LICENSE README.rst
+%doc LICENSE.rst README.rst
 %dir %{py3_sitedir}/markupsafe
 %{py3_sitedir}/markupsafe/*.py
 %{py3_sitedir}/markupsafe/__pycache__
