@@ -7,26 +7,26 @@
 Summary:	Implements a XML/HTML/XHTML Markup safe string for Python 3
 Summary(pl.UTF-8):	MarkupSafe - łańcuch dla Pythona 3 bezpieczny pod kątem znaczników XML/HTML/XHTML
 Name:		python3-%{module}
-Version:	1.1.1
-Release:	3
+Version:	2.0.1
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/markupsafe/
 Source0:	https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
-# Source0-md5:	43fd756864fe42063068e092e220c57b
-URL:		http://www.pocoo.org/projects/markupsafe/#markupsafe
-BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.714
+# Source0-md5:	892e0fefa3c488387e5cc0cad2daa523
+URL:		https://markupsafe.palletsprojects.com/
 BuildRequires:	python3-devel >= 1:3.4
 BuildRequires:	python3-setuptools
+BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with tests}
 BuildRequires:	python3-pytest
 %endif
 %if %{with doc}
 BuildRequires:	python3-pallets-sphinx-themes >= 1.1.0
 # docs/requirements.txt says 1.8.0, but 1.7.6 also works
-#BuildRequires:	sphinx-pdg-3 >= 1.8.0
 BuildRequires:	sphinx-pdg-3 >= 1.7.0
+#BuildRequires:	sphinx-pdg-3 >= 1.8.0
 %endif
 Requires:	python3-modules >= 1:3.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -80,6 +80,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py3_sitedir}/markupsafe
 %{py3_sitedir}/markupsafe/*.py
 %{py3_sitedir}/markupsafe/__pycache__
+%{py3_sitedir}/markupsafe/_speedups.pyi
+%{py3_sitedir}/markupsafe/py.typed
 %attr(755,root,root) %{py3_sitedir}/markupsafe/_speedups.cpython-*.so
 %{py3_sitedir}/MarkupSafe-%{version}-py*.egg-info
 
