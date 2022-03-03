@@ -15,7 +15,7 @@ Group:		Development/Languages/Python
 Source0:	https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
 # Source0-md5:	892e0fefa3c488387e5cc0cad2daa523
 URL:		https://markupsafe.palletsprojects.com/
-BuildRequires:	python3-devel >= 1:3.4
+BuildRequires:	python3-devel >= 1:3.6
 BuildRequires:	python3-setuptools
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -24,11 +24,11 @@ BuildRequires:	python3-pytest
 %endif
 %if %{with doc}
 BuildRequires:	python3-pallets-sphinx-themes >= 1.1.0
-# docs/requirements.txt says 1.8.0, but 1.7.6 also works
-BuildRequires:	sphinx-pdg-3 >= 1.7.0
-#BuildRequires:	sphinx-pdg-3 >= 1.8.0
+BuildRequires:	python3-sphinx_issues >= 1.2.0
+BuildRequires:	python3-sphinxcontrib-log-cabinet >= 1.0.1
+BuildRequires:	sphinx-pdg-3 >= 1.8.0
 %endif
-Requires:	python3-modules >= 1:3.4
+Requires:	python3-modules >= 1:3.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
