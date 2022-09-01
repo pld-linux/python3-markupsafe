@@ -7,15 +7,15 @@
 Summary:	Implements a XML/HTML/XHTML Markup safe string for Python 3
 Summary(pl.UTF-8):	MarkupSafe - łańcuch dla Pythona 3 bezpieczny pod kątem znaczników XML/HTML/XHTML
 Name:		python3-%{module}
-Version:	2.0.1
-Release:	4
+Version:	2.1.1
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/markupsafe/
 Source0:	https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
-# Source0-md5:	892e0fefa3c488387e5cc0cad2daa523
+# Source0-md5:	9809f9fdd98bc835b0c21aa8f79cbf30
 URL:		https://markupsafe.palletsprojects.com/
-BuildRequires:	python3-devel >= 1:3.6
+BuildRequires:	python3-devel >= 1:3.7
 BuildRequires:	python3-setuptools
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -28,7 +28,7 @@ BuildRequires:	python3-sphinx_issues >= 1.2.0
 BuildRequires:	python3-sphinxcontrib-log-cabinet >= 1.0.1
 BuildRequires:	sphinx-pdg-3 >= 1.8.0
 %endif
-Requires:	python3-modules >= 1:3.6
+Requires:	python3-modules >= 1:3.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -56,6 +56,7 @@ Dokumentacja API modułu Pythona MarkupSafe.
 %py3_build
 
 %if %{with tests}
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
 PYTHONPATH=$(pwd)/$(echo build-3/lib.*) \
 %{__python3} -m pytest tests
 %endif
@@ -67,6 +68,7 @@ PYTHONPATH=$(pwd)/$(echo build-3/lib.*) \
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %py3_install
 
 %{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/markupsafe/_speedups.c
