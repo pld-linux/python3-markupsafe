@@ -3,17 +3,18 @@
 %bcond_without	doc	# Sphinx documentation
 %bcond_without	tests	# unit tests
 
-%define 	module	markupsafe
+%define		module	markupsafe
 Summary:	Implements a XML/HTML/XHTML Markup safe string for Python 3
 Summary(pl.UTF-8):	MarkupSafe - łańcuch dla Pythona 3 bezpieczny pod kątem znaczników XML/HTML/XHTML
 Name:		python3-%{module}
-Version:	2.1.1
+# WARNING: Check ceph BRs before updating past 2.1.x
+Version:	2.1.5
 Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/markupsafe/
 Source0:	https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
-# Source0-md5:	9809f9fdd98bc835b0c21aa8f79cbf30
+# Source0-md5:	8fe7227653f2fb9b1ffe7f9f2058998a
 URL:		https://markupsafe.palletsprojects.com/
 BuildRequires:	python3-devel >= 1:3.7
 BuildRequires:	python3-setuptools
