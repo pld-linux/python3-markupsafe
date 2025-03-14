@@ -9,7 +9,7 @@ Summary(pl.UTF-8):	MarkupSafe - łańcuch dla Pythona 3 bezpieczny pod kątem zn
 Name:		python3-%{module}
 # WARNING: Check ceph BRs before updating past 2.1.x
 Version:	2.1.5
-Release:	3
+Release:	4
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/markupsafe/
