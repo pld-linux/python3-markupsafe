@@ -7,17 +7,17 @@
 Summary:	Implements a XML/HTML/XHTML Markup safe string for Python 3
 Summary(pl.UTF-8):	MarkupSafe - łańcuch dla Pythona 3 bezpieczny pod kątem znaczników XML/HTML/XHTML
 Name:		python3-%{module}
-# WARNING: Check ceph BRs before updating past 2.1.x
-Version:	2.1.5
-Release:	4
+# WARNING: Check ceph BRs before updating past 2.1.x; ceph doesn't seem to use this, so BR bug in ceph?
+Version:	3.0.3
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/markupsafe/
-Source0:	https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
-# Source0-md5:	8fe7227653f2fb9b1ffe7f9f2058998a
+Source0:	https://files.pythonhosted.org/packages/source/m/markupsafe/markupsafe-%{version}.tar.gz
+# Source0-md5:	13a73126d25afa72a1ff0daed072f5fe
 URL:		https://markupsafe.palletsprojects.com/
-BuildRequires:	python3-devel >= 1:3.7
-BuildRequires:	python3-setuptools
+BuildRequires:	python3-devel >= 1:3.9
+BuildRequires:	python3-setuptools >= 77
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with tests}
@@ -29,7 +29,7 @@ BuildRequires:	python3-sphinx_issues >= 1.2.0
 BuildRequires:	python3-sphinxcontrib-log-cabinet >= 1.0.1
 BuildRequires:	sphinx-pdg-3 >= 1.8.0
 %endif
-Requires:	python3-modules >= 1:3.7
+Requires:	python3-modules >= 1:3.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -51,7 +51,7 @@ API documentation for Python MarkupSafe module.
 Dokumentacja API modułu Pythona MarkupSafe.
 
 %prep
-%setup -q -n MarkupSafe-%{version}
+%setup -q -n markupsafe-%{version}
 
 %build
 %py3_build
@@ -79,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES.rst LICENSE.rst README.rst
+%doc CHANGES.rst LICENSE.txt README.md
 %dir %{py3_sitedir}/markupsafe
 %{py3_sitedir}/markupsafe/*.py
 %{py3_sitedir}/markupsafe/__pycache__
