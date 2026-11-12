@@ -8,13 +8,13 @@ Summary:	Implements a XML/HTML/XHTML Markup safe string for Python 3
 Summary(pl.UTF-8):	MarkupSafe - łańcuch dla Pythona 3 bezpieczny pod kątem znaczników XML/HTML/XHTML
 Name:		python3-%{module}
 # WARNING: Check ceph BRs before updating past 2.1.x; ceph doesn't seem to use this, so BR bug in ceph?
-Version:	3.0.3
+Version:	3.0.4
 Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/markupsafe/
 Source0:	https://files.pythonhosted.org/packages/source/m/markupsafe/markupsafe-%{version}.tar.gz
-# Source0-md5:	13a73126d25afa72a1ff0daed072f5fe
+# Source0-md5:	7c70b0284d3733795287d8d67e7164e0
 URL:		https://markupsafe.palletsprojects.com/
 BuildRequires:	python3-devel >= 1:3.9
 BuildRequires:	python3-setuptools >= 77
